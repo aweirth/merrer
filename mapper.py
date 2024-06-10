@@ -1,11 +1,13 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+# -*- coding:utf-8 -*-
 import sys
 import re
 
-# Read input line by line
+# match contiguous strings of letters
+word_pattern = re.compile(r'[a-zA-Z]+')
+
 for line in sys.stdin:
     line = line.strip()
-    words = re.findall(r'\b\w+\b', line)
-    # count the word
+    words = word_pattern.findall(line)
     for word in words:
-        print(f'{word.lower()}\t1')
+        print('%s\t%s' % (word.lower(), 1))
